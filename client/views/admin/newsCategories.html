@@ -1,0 +1,60 @@
+<template name="newsCategories">
+    <legend>
+        <h4>Categories<br>
+        </h4>
+    </legend>
+    <div class="col-md-4">
+        <h6 class="_17"><i class="fa fa-list"></i> Add New Category</h6>
+        <form id="categoryForm">
+            <div class="form-group">
+                <label class="normal">Name</label>
+                <input type="text" id="name" class="form-control ">
+                <smal class="italic">The name is how it appears on the site</smal>
+            </div>
+            <div class="form-group">
+                <label class="normal">Slug</label>
+                <input type="text" id="slug" class="form-control ">
+                <smal class="italic">The “slug” is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens.</smal>
+            </div>
+            <div class="form-group">
+                <label class="normal">Description</label>
+                <textarea type="text" id="description" class="form-control "></textarea>
+                <smal class="italic">The description is not prominent by default; however, some themes may show it.</smal>
+            </div>
+            <div class="form-group" >
+                <button type="submit" class="btn btn-primary pull-right">Save Category</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <div class="table-responsive bgwhite">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr class=" normal helvetica fblue5">
+                    <th><input type="checkbox"> Name</th>
+                    <th>Description</th>
+                    <th>Slug</th>
+                    <th>Count</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each Categories}}
+                    <tr>
+                        <td class="fblue5 _15">
+                            <input type="checkbox"> &nbsp;
+                            <div class="rowOptions">
+                                {{name}}<br>
+                                <small><a class="point">Edit</a> | <a class="fred3 point">Delete</a></small>
+                            </div>
+                        </td>
+                        <td>{{description}}</td>
+                        <td>{{slug}}</td>
+                        <td>0</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</template>

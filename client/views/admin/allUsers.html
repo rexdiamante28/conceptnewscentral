@@ -1,0 +1,39 @@
+<template name="allUsers">
+    <legend>
+        <h4>Users<br>
+            <small>List of all users in the site</small>
+        </h4>
+    </legend>
+    <div class="table-responsive bgwhite">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr class="_15 normal helvetica fblue5">
+                    <th><input type="checkbox"> Username</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Posts</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each Users}}
+                    <tr>
+                        <td class="fblue5 _15">
+                            <input type="checkbox"> &nbsp;
+                            <img src="/images/icons/admin/{{avatar}}" class="tableThumb">
+                            <div class="rowOptions">
+                                {{username}}<br>
+                                <small><a class="point">Edit</a> | <a class="fred3 point">Delete</a></small>
+                            </div>
+                        </td>
+                        <td>{{name}}</td>
+                        <td class="fblue5">{{emailAddress}}</td>
+                        <td>{{level}}</td>
+                        <td>0</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</template>

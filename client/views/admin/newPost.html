@@ -1,0 +1,91 @@
+<template name="newPost">
+    <legend>
+        <h4>New Post
+        </h4>
+    </legend>
+    {{>postForm}}
+</template>
+
+<template name="postForm">
+    <form id="postForm">
+        <div class="col-md-9">
+            <div class="form-group ">
+                <label class="pull-right point"><input type="file"  id="media" value="Add Media">
+                    <i class="fa fa-music"></i> <i class="fa fa-picture-o"></i> <i class="fa fa-caret-square-o-right"></i> Add Media</label>
+            </div>
+            <div class="form-group">
+                <label class="_17">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Post title">
+            </div>
+            <div class="form-group">
+                <label class="_17">Author</label>
+                <select type="text" class="form-control" id="title" placeholder="Post title">
+                    <option>Select Author</option>
+                    {{#each Authors}}
+                        <option value="{{_id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="form-group top-30">
+                <textarea id="textEditor"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary pull-right">Save Post</button>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+            <div class="setForm top-50">
+                <div class="heading">
+                    <label class="_17"><i class="fa fa-th-list"></i>&nbsp; Social Broadcasting</label>
+                </div>
+                <div class="body">
+                    <label>Brodcast Post</label><br/>
+                    <label class="point"><input type="radio" name="broadcast" id="yes">Yes</label> &nbsp;
+                    <label class="point"><input type="radio" name="broadcast" id="no">No</label>
+                </div>
+            </div>
+
+            <div class="setForm top-20">
+                <div class="heading">
+                    <label class="_17"><i class="fa fa-th-list"></i>&nbsp; Publish</label>
+                </div>
+                <div class="body">
+                    <label>Status</label><br/>
+                    <label class="point"><input type="radio" name="broadcast" id="yes">Draft</label> &nbsp;
+                    <label class="point"><input type="radio" name="broadcast" id="no">Publish</label>
+                </div>
+            </div>
+
+            <div class="setForm top-20">
+                <div class="heading">
+                    <label class="_17"><i class="fa fa-th-list"></i>&nbsp; Categories</label>
+                </div>
+                <div class="body selectionDiv">
+                    {{#each Categories}}
+                        <label class="point"><input type="checkbox" id="{{_id}}"> {{name}}</label><br/>
+                    {{/each}}
+                </div>
+            </div>
+
+            <div class="setForm top-20">
+                <div class="heading">
+                    <label class="_17"><i class="fa fa-th-list"></i>&nbsp; Tags</label>
+                </div>
+                <div class="body">
+                    <div class="form-group">
+                        <textarea class="form-control" id="tags" placeholder="put tags here"></textarea>
+                        <label class="italic text-muted">Separate each tag with comma (,)</label>
+                    </div>
+                </div>
+                <div class="body selectionDiv">
+                    {{#each Tags}}
+                        <label class="point"><input type="checkbox" id="{{_id}}"> {{name}}</label><br>
+                    {{/each}}
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+</template>

@@ -1,0 +1,69 @@
+<template name="addNewUser">
+    <form id="addUserForm" class="form-horizontal" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>
+                <h4>Add New User<br>
+                    <small>Create a brand new user and add them to this site</small>
+                </h4>
+            </legend>
+            <div class="col-sm-10 col-sm-offset-1">
+                <h5><i class="fa fa-align-justify"></i> &nbsp; Account Information</h5>
+                <div class="form-group">
+                    <label for="email" class="col-lg-2 control-label">Email</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userName" class="col-lg-2 control-label">User name</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="userName" placeholder="User name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-lg-2 control-label">Password</label>
+                    <div class="col-lg-10">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="showPassword"> Show Password
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fullName" class="col-lg-2 control-label">Full Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="fullName" placeholder="Full Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="role" class="col-lg-2 control-label">User Role</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="role">
+                            <option>Subscriber</option>
+                            <option>Contributor</option>
+                            <option>Author</option>
+                            <option>Editor</option>
+                            <option>Administrator</option>
+                        </select>
+                    </div>
+                </div>
+                <hr/>
+                <h5><i class="fa fa-file-image-o"></i>&nbsp; Avatar</h5>
+                <div class="form-group">
+                    <label for="fullName" class="col-lg-2 control-label">Image</label>
+                    <div class="col-lg-10">
+                        <input type="file"  id="avatar" placeholder="Full Name">
+                        <div class="avatarHolder top-10">
+                            <img src="/images/icons/admin/avatar.png" class="col-xs-12 no-padd">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                   <button type="submit" class="btn btn-primary pull-right">Save User</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</template>

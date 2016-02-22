@@ -1,0 +1,61 @@
+<template name="adminLayout">
+    <div class="col-xs-12 no-padd" id="adminBasePage">
+        {{>adminNavibar}}
+        {{>adminPageContainer}}
+    </div>
+</template>
+
+<template name="adminNavibar">
+    <div id="adminNav">
+        <div id="adminLogo">
+            <img src="/images/icons/site/logo.png" class="col-xs-12">
+        </div>
+        <div class="top-100"></div>
+        <ul class="tahoma">
+            <li id="l1">
+                <a><i class="fa fa-dashboard"></i>Dashboard</a>
+            </li>
+            <li id="l2">
+                <a> <i class="fa fa-users"></i>Users</a>
+            </li>
+            <ul id="l2_0">
+                <li id="l2_1"><a href="/admin/allusers">All users</a></li>
+                <li id="l2_2"><a href="/admin/addnewuser">Add New</a></li>
+                <li id="l2_3"><a>Your Profile</a></li>
+            </ul>
+            <li id="l3">
+                <a> <i class="fa fa-newspaper-o"></i>Posts</a>
+            </li>
+            <ul id="l3_0">
+                <li id="l3_1"><a>All Posts</a></li>
+                <li id="l3_2"><a href="/admin/newpost">Add New</a></li>
+                <li id="l3_3"><a href="/admin/newscategories">Categories</a></li>
+                <li id="l3_4"><a href="/admin/tags">Tags</a></li>
+            </ul>
+            <li id="l4">
+                <a><i class="fa fa-list-alt"></i>Breaking News</a>
+            </li>
+            <ul id="l4_0">
+                <li id="l4_1"><a>Breaking news</a></li>
+                <li id="l4_2"><a>New Spot</a></li>
+            </ul>
+            <li id="l5">
+                <a> <i class="fa fa-wrench"></i>Tools</a>
+            </li>
+            <li id="l6">
+                <a> <i class="fa fa-cog"></i>Settings</a>
+            </li>
+            <ul id="l6_0">
+                <li id="l6_1"><a>Theme</a></li>
+            </ul>
+        </ul>
+    </div>
+</template>
+
+<template name="adminPageContainer">
+    <div id="adminPageContainer">
+        <div class="row">
+            {{>yield}}
+        </div>
+    </div>
+</template>

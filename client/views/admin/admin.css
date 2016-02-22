@@ -1,0 +1,111 @@
+#adminBasePage{
+    height: auto;
+    min-height: 100vh;
+    background-color: white;
+}
+
+#adminNav{
+    min-height: 100vh;
+    width: 200px;
+    background-color: #23282D;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#adminNav ul  {
+    padding-left:0px;
+}
+
+#adminNav ul li{
+    text-decoration: none;
+    list-style-type: none;
+    padding: 2px 0;
+    padding-left: 15px;
+    cursor: pointer;
+}
+#adminNav ul li i{
+    font-size: 17px;
+    color: #9CA1A6;
+    width: 30px;
+}
+#adminNav ul li a{
+    color: #E1E7EE;
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+}
+#adminNav .active, #adminNav .active:hover {
+    background-color: #0073AA;
+}
+#adminNav ul li:hover{
+    background-color: #191E23;
+}
+
+#adminNav ul li:hover a, #adminNav ul li:hover i {
+    color:#09B9EB;
+}
+
+#adminLogo{
+    margin-top:20px;
+}
+#adminNav ul ul {
+    background-color: #32373C;
+}
+#adminNav ul ul li a {
+    color: #e5e5e5;
+    display: block;
+}
+
+#adminNav ul ul li:hover {
+    background-color: transparent;
+}
+
+#adminPageContainer{
+    width: 100%;
+    height: auto;
+    padding: 20px 20px 50px 220px;
+    background-color: #F1F1F1;
+    min-height: 100vh;
+}
+.avatarHolder{
+    width: 200px;
+    height: 200px;
+    background-color: #C5C5C5;
+}
+
+.tableThumb{
+    width: 30px;
+}
+.rowOptions{
+    display: inline-block;
+    line-height: 20px;
+}
+.rowOptions small{
+    visibility: hidden;
+}
+td input, td img{
+    vertical-align: top;
+}
+td:hover .rowOptions small{
+    visibility: visible;
+}
+.setForm{
+    background-color: white;
+    -webkit-box-shadow:  1px 1px 1px #D4D6D4;
+    -moz-box-shadow:  1px 1px 1px #D4D6D4;
+    box-shadow:  1px 1px 1px #D4D6D4;
+}
+
+.setForm .heading{
+    border-bottom: 1px solid #F1F1F1;
+    width: 100%;
+    padding: 5px 15px 0px 15px;
+}
+.setForm .body{
+    padding: 10px;
+}
+.selectionDiv{
+    max-height: 250px;
+    overflow-y: scroll;
+}
