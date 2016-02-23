@@ -81,11 +81,17 @@ Logout = function logoutNow(){
 
 
 
-ConfirmActionDelete = function confirmAction(id,collectionName){
-    var result = confirm("Are you sure you want to deletre this record?");
-    if (result) {
-        collectionName.remove({_id:id});
-    }
+ConfirmActionDelete = function confirmAction(id, deleteMethod, callback){
+    alertify.confirm("Delete","Are you sure you want to delete this record?", function () {
+        Meteor.call(deleteMethod, id ,function (err, result) {
+            if(!err){
+                alertify.success("Deleted Successfully");
+                callback();
+            }
+        })
+    }, function () {
+
+    });
 }
 
 Goto = function goto(route){
