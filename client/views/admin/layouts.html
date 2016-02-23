@@ -42,6 +42,9 @@
             <li id="l5">
                 <a> <i class="fa fa-wrench"></i>Tools</a>
             </li>
+            <ul id="15_0">
+                <li id="15_1"><a href="/admin/aggregator">Aggregator</a></li>
+            </ul>
             <li id="l6">
                 <a> <i class="fa fa-cog"></i>Settings</a>
             </li>
@@ -54,8 +57,10 @@
 
 <template name="adminPageContainer">
     <div id="adminPageContainer">
-        <div class="row">
-            {{>yield}}
+        <div class="row" style="margin-left: 0; margin-right: 0">
+            <div class="col-lg-12">
+                {{>yield}}
+            </div>
         </div>
     </div>
 </template>

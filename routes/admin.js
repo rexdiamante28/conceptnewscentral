@@ -32,3 +32,12 @@ Router.route('/admin/tags', function () {
     this.layout('adminLayout');
 });
 
+Router.route('/admin/aggregator-keywords', function () {
+
+    this.render('aggregator_keywords');
+    this.layout('adminLayout');
+
+    Deps.autorun(function () {
+        Meteor.subscribe('getKeywordsPub', Session.get('skips'));
+    })
+});
