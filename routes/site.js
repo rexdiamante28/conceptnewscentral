@@ -4,9 +4,20 @@
 
 
 Router.route('/', function () {
-    this.render('siteHeader');
+    this.render('siteHomePage');
     this.layout('siteLayout');
 });
+
+Router.route('/category', function () {
+    this.render('sitePerCategory');
+    this.layout('siteLayout');
+});
+
+Router.route('/viewnews', function () {
+    this.render('siteNewsView');
+    this.layout('siteLayout');
+});
+
 
 
 Router.route('/concept_admin', function () {
