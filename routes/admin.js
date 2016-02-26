@@ -58,3 +58,27 @@ Router.route('/admin/allposts', function () {
     this.render('allposts');
     this.layout('adminLayout');
 });
+Router.route('/admin/aggregator-rss', function () {
+
+    this.render('aggregator_rss');
+    this.layout('adminLayout');
+
+    Deps.autorun(function () {
+        Meteor.subscribe('getRssPub', Session.get('skips'));
+    })
+});
+
+Router.route('/admin/aggregator-archive', function () {
+
+    this.render('aggregator_archive');
+    this.layout('adminLayout');
+
+    Deps.autorun(function () {
+        Meteor.subscribe('getFeedsPub', Session.get('skips'));
+    })
+});
+
+Router.route('/admin/dump', function () {
+    this.render('app_dump');
+    this.layout('adminLayout');
+})

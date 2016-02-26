@@ -1,16 +1,7 @@
 Template.aggregator_keywords.rendered = function () {
     Session.set('saveBtnTxt', "Save");
     Session.set('resetBtnTxt', "Reset");
-
-    Meteor.call('getPageCount', function (err, result) {
-        if(!err){
-            Session.set('totalPageNumber', result);
-
-            for(var i = 1; i <= result; i++ ) {
-                $('<li><a class="page-item" href="#">' + i + '</a></li>').insertBefore('#last-item-nav');
-            }
-        }
-    })
+    Session.set('updateId', '0');
 
 }
 
@@ -25,88 +16,63 @@ Template.aggregator_keywords.helpers({
 
 Template.aggregator_keywords.events({
     'click #resetBtn': function () {
-        $('#keywordName').val('');
-        $('#keywordName').focus();
+
+        if($('#resetBtn').text() === 'Cancel'){
+            Session.set('saveBtnTxt', 'Save');
+            Session.set('resetBtnTxt', 'Reset');
+            Session.set('updateId', '0');
+            $('.selectors').removeClass('success');
+            $('#keywordName').val('');
+        } else {
+            $('#keywordName').val('');
+            $('#keywordName').focus();
+        }
+
     },
     'submit #keywordForm': function (event, template) {
         event.preventDefault();
 
         var name = template.find('#keywordName').value;
 
-        Meteor.call('insertKeyword', name, function (error, result) {
-            var success = "New keyword added.";
-            Validate(error, Keywords, template, "#keywordForm", success)
-        });
-
-        Meteor.call('getPageCount', function (err, result) {
-            if(!err){
-                if(parseInt(Session.get('totalPageNumber'))!== result){
-                    $('<li><a class="page-item" href="#">' + result + '</a></li>').insertBefore('#last-item-nav');
-                    Session.set('totalPageNumber', result)
-                }
-            }
-        })
-
-    },
-    'click .page-item': function (event) {
-        //console.log('Page changing...');
-        pageNumber = event.target.innerHTML;
-        var skips = (pageNumber - 1) * 10;
-        Session.set('skips',skips);
-
-        $('.page-item').removeClass('active');
-        $(event.target).addClass('active');
+        if($('#saveBtn').text() === 'Update') {
+            Meteor.call('updateKeyword', Session.get('updateId'), name, function (error, result) {
+                var success = "Keyword updated.";
+                Validate(error, Keywords, template, "#keywordForm", success)
+                Session.set('updateId', '0');
+                Session.set('saveBtnTxt', 'Save');
+                Session.set('resetBtnTxt', 'Reset');
+                $('.selectors').removeClass('success');
+            })
+        } else {
+            Meteor.call('insertKeyword', name, function (error, result) {
+                var success = "New keyword added.";
+                Validate(error, Keywords, template, "#keywordForm", success)
+            });
+        }
     },
     'click .deleteKeyword': function () {
-        var callback = function() {
-            Meteor.call('getPageCount', function (err, result) {
-                if(!err){
-                    if(parseInt(Session.get('totalPageNumber')) > result){
-                        $('#last-item-nav').prev().remove();
-                        Session.set('totalPageNumber', result)
-                    }
-                }
-            })
-        }
-
-        ConfirmActionDelete(this._id, 'deleteKeyword', callback);
+        ConfirmActionDelete(this._id, 'deleteKeyword');
     },
-    'click #first-item-nav': function (event) {
-
-        if(!$(event.currentTarget).hasClass('disabled')){
-            var currentPage = Session.get('skips');
-            Session.set('skips', currentPage - 10);
+    'click .editKeyword': function (event) {
+        Session.set('saveBtnTxt', 'Update');
+        Session.set('resetBtnTxt', 'Cancel');
+        $('#keywordName').val(this.name);
+        $('.selectors').removeClass('success');
+        $(event.target.parentElement.parentElement.parentElement).addClass('success');
+        Session.set('updateId', this._id);
+    },
+    'click .prevBtn': function () {
+        if(Session.get('skips') >= 10) {
+            Session.set('skips', Session.get('skips') - 10);
         }
     },
-    'click #last-item-nav': function (event) {
-
-        if(!$(event.currentTarget).hasClass('disabled')) {
-            var currentPage = Session.get('skips');
-            Session.set('skips', currentPage + 10);
-        }
-
+    'click .nextBtn': function () {
+        Session.set('skips', Session.get('skips') + 10);
     }
 })
 
 Template.keywordsTable.rendered = function () {
     Session.set('skips', 0);
-
-    Deps.autorun(function () {
-        if(parseInt(Session.get('skips')) === 0){
-            $('#first-item-nav').addClass('disabled');
-        } else {
-            $('#first-item-nav').removeClass('disabled');
-        }
-    })
-
-    Deps.autorun(function () {
-        if(parseInt(Session.get('totalPageNumber')) === (parseInt(Session.get('skips'))/10) + 1){
-            $('#last-item-nav').addClass('disabled');
-        } else {
-            $('#last-item-nav').removeClass('disabled');
-        }
-    })
-
 }
 
 

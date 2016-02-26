@@ -1,13 +1,18 @@
-<template name="aggregator_keywords">
+<template name="aggregator_rss">
     <div class="container-fluid">
-    {{> aggregator}}
-        <div class="col-lg-4 padd-10">
+        {{> aggregator}}
+
+        <div class="col-lg-3 padd-10">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form id="keywordForm">
+                    <form id="rssForm">
                         <div class="form-group-sm">
-                            <label class="col-lg-12 control-label">Keyword</label>
-                            <input type="text" class="form-control" id="keywordName" />
+                            <label class="col-lg-12 control-label">Source Name</label>
+                            <input type="text" class="form-control" id="sourceName" />
+                        </div>
+                        <div class="form-group-sm">
+                            <label class="col-lg-12 control-label">Link</label>
+                            <input type="text" class="form-control" id="link" />
                         </div>
                         <div class="padd-5">
                             <button id="saveBtn" type="submit" class="btn btn-primary">{{saveBtnTxt}}</button>
@@ -17,10 +22,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-8 padd-10">
+        <div class="col-lg-9 padd-10">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    {{> keywordsTable}}
+                    {{> rssTable}}
 
                     <ul class="pager">
                         <li><a class="prevBtn" href="#">Previous</a></li>
@@ -30,24 +35,24 @@
             </div>
         </div>
     </div>
-
 </template>
 
-<template name="keywordsTable">
+
+<template name="rssTable">
     <table class="table table-responsive">
         <thead>
-        <th>Keywords</th>
+            <th>Source Name</th>
+            <th>Link</th>
         </thead>
         <tbody>
-
-        {{#each keywords}}
-        <tr class="selectors">
-            <td>{{name}}</td>
-            <td><a class="editKeyword"><i class="fa fa-pencil"></i></a></td>
-            <td><a class="deleteKeyword"><i class="fa fa-trash"></i></a></td>
-        </tr>
-        {{/each}}
-
+            {{#each rss}}
+            <tr class="selectors">
+                <td>{{source}}</td>
+                <td style="max-width: 40%">{{link}}</td>
+                <td><a class="editRss"><i class="fa fa-pencil"></i></a></td>
+                <td><a class="deleteRss"><i class="fa fa-trash"></i></a></td>
+            </tr>
+            {{/each}}
         </tbody>
     </table>
 </template>

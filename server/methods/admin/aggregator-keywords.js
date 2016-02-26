@@ -14,6 +14,9 @@ Meteor.methods({
         var keywordsCount = Keywords.find().count();
         return Math.ceil(keywordsCount/10);
     },
+    'updateKeyword': function (id, name) {
+        Keywords.update({_id: id},{$set:{name: name}})
+    },
     'deleteKeyword': function (id) {
           Keywords.remove(id);
     },
