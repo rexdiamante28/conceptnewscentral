@@ -4,16 +4,31 @@
 
 
 Router.route('/', function () {
+
+    Meteor.subscribe("getAllArticles");
+    Meteor.subscribe("getAllVideos");
+    Meteor.subscribe("getCategories");
+
     this.render('siteHomePage');
     this.layout('siteLayout');
 });
 
 Router.route('/category', function () {
+
+    Meteor.subscribe("getAllArticles");
+    Meteor.subscribe("getAllVideos");
+    Meteor.subscribe("getCategories");
+
     this.render('sitePerCategory');
     this.layout('siteLayout');
 });
 
 Router.route('/viewnews', function () {
+
+    Meteor.subscribe("getAllArticles");
+    Meteor.subscribe("getAllVideos");
+    Meteor.subscribe("getCategories");
+
     this.render('siteNewsView');
     this.layout('siteLayout');
 });

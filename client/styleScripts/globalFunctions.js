@@ -15,3 +15,10 @@ if(Meteor.isServer){
 
 }
 
+UI.registerHelper('StringLimit', function(number,String){
+    return String.substring(0,number);
+})
+
+UI.registerHelper('formatDate', function(date) {
+    return moment(date).format('MMM-DD-YYYY');
+});

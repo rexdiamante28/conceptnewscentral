@@ -4,6 +4,7 @@
 if(Meteor.isClient){
     Template.siteHeader.helpers({
         HeaderLinks : function(){
+            Meteor.subscribe("getCategories");
             return Categories.find({});
         }
     })

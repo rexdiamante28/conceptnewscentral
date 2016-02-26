@@ -1,11 +1,14 @@
 .site-body{
    background-color: #F1F1F1;
+    padding-bottom: 50px;
 }
 .sitePage{
     height: auto;
     max-width: 1000px;
     min-height: 100vh;
     margin: auto;
+    margin-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 #header-logo{
@@ -32,4 +35,68 @@
 }
 .page{
     border-top: solid 1px #C0C0C0;
+}
+
+.leftContainer{
+    border-right: 1px solid #E2E2E2;
+}
+
+h1,h2,h3,h4,h5{
+    margin-bottom: 0px !important;
+}
+
+.page p{
+    line-height: 100%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+.unjustify{
+    text-align: left !important;
+    text-justify: none !important;
+}
+.ContainerArticle{
+    border-bottom: solid 1px #C0C0C0;
+}
+.featuredArticle{
+    border-bottom: double 3px #C0C0C0;
+}
+.ArticleOwnerImg{
+    width: 70px;
+    margin:5px ;
+}
+
+.ArticleOwnerImg-xs{
+    width: 50px;
+    margin: 2px;
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
+.section{
+    border-top: 3px solid #444444;
+    border-bottom: 1px solid #F0F0F0;
+}
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

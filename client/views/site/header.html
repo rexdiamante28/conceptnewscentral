@@ -1,16 +1,14 @@
 <Template name="siteHeader">
     <div class="col-xs-12 no-padd top-20">
-        <div class="bgwhite">
+        <div class="bgwhite top-5">
             <div class="row">
                 <div class="col-xs-12">
-                    <div class="col-sm-9">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon2"><i class="fa fa-search _17"> </i><label class="point">&nbsp;SEARCH</label></span>
-                            <input style="box-shadow: none;" type="text" class="form-control" placeholder="Search for...">
-                        </div>
-                    </div>
-                    <div class="colsm-3">
-                        <button class="btn btn-primary pull-right">Log In</button>
+                    <div class="col-sm-12 padd-5 bold tahoma">
+                        <span>Tuesday, February 23, 2016</span> |
+                        <span class="point"><i class="fa fa-search"></i> SEARCH</span> |
+                        <span class="point"> SUBSCRIBE</span> |
+                        <span class="point"> LOG IN</span> |
+                        <span class="pull-right _15"><i class="fa fa-facebook fblue5"></i> | <i class="fa fa-twitter fblue6"></i> | <i class="fa fa-instagram forange1"></i> | <i class="fa fred1 fa-google-plus"></i></span>
                     </div>
                 </div>
             </div>
@@ -87,25 +85,41 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-default" style="margin-bottom: 0px !important;">
-            <div class="container-fluid" >
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <nav class="navbar navbar-default" style="margin-bottom: 0px !important;">
+                    <div class="container-fluid section"  >
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        {{#each HeaderLinks}}
-                            <li class=""><a href="/category">{{name}}</a></li>
-                        {{/each}}
-                    </ul>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav ">
+                                {{#each HeaderLinks}}
+                                    <li class="tahoma bold"><a href="/category">{{name}}</a></li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="bgwhite top-5">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-sm-12 no-padd">
+                        <marquee style="display: inline-block">
+                            News ticker News ticker News ticker News ticker News ticker News ticker News ticker News ticker News ticker
+                            News ticker News ticker News ticker News ticker News ticker News ticker News ticker News ticker News ticker
+                        </marquee>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </div>
 </Template>

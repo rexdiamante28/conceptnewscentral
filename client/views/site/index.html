@@ -1,33 +1,100 @@
 <template name="siteHomePage">
     <div class="bgwhite col-xs-12 page">
         <div class="row">
-            <div class="col-md-3">
-                <h1>Left</h1>
+            <div class="col-md-8 no-padd">
+                <div class="col-md-5 leftContainer">
+                    {{#each LeftArticles}}
+                        <div class="ContainerArticle col-xs-12 no-padd">
+                            <a class="point" href="/viewnews"><h5 class="_19 bold italic">{{title}}</h5></a>
+                            <small class="_12">By: {{author}}</small>
+                            <p class="fgray1"><small>{{StringLimit 300 body}}...</small></p>
+                            <small class="_10 pull-right">Posted By: {{postedBy}}</small>
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="col-md-7 leftContainer">
+                    <div class="col-xs-12 no-padd featuredArticle ">
+                        <img src="{{FeaturedArticle.images.[0].url}}" class="col-xs-12 no-padd bottom-20">
+                        <h5 class="_19 bold">{{FeaturedArticle.title}}</h5>
+                        <small class="_12">By: {{FeaturedArticle.author}}</small>
+                        <p class="fgray1"><small>{{StringLimit 300 FeaturedArticle.body}}...</small></p>
+                        <small class="_10 pull-right">Posted By: {{FeaturedArticle.postedBy}}</small>
+                    </div>
+                    {{#each MiddleArticles}}
+                        <div class="ContainerArticle col-xs-12 no-padd ">
+                            <h5 class="_15 fgray1 bold">{{title}}</h5>
+                            <small class="_12">By: {{author}}</small>
+                            <div class="col-xs-12 no-padd">
+                                <p class="fgray1"><img src="images/uploads/owner.jpg" class="ArticleOwnerImg pull-right"><small>{{StringLimit 300 body}}...</small></p>
+                            </div>
+                            <small class="_10 pull-right">Posted By: {{postedBy}}</small>
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="col-xs-12 featuredArticle"></div>
+                <div class="col-xs-12 top-20 no-padd">
+                    {{#each LLMArticles}}
+                        <div class="col-sm-4 padd-10 leftContainer">
+                            <img src="{{images.[0].url}}" class="col-xs-12 no-padd bottom-20">
+                            <h5 class="_15 bold">{{title}}</h5>
+                            <small class="_12">By: {{author}}</small>
+                            <p class="fgray1"><small>{{StringLimit 300 body}}...</small></p>
+                            <small class="_10 pull-right">Posted By: {{postedBy}}</small>
+                        </div>
+                    {{/each}}
+                </div>
             </div>
-            <div class="col-md-5">
-                <h1>Middle</h1>
-            </div>
-            <div class="col-md-4">
-                <h1>Right</h1>
+            <div class="col-md-4 no-padd">
+                {{>externalNews}}
             </div>
         </div>
-        <div class="row">
+        <div class="row ContainerArticle">
+            <div class="col-xs-12 section bottom-10">
+                <label class="bold _17 fgray1">CNC VIDEOS</label>
+            </div>
             <div class="col-xs-12">
-                <h1>Video</h1>
+                <div class="col-sm-9 padd-5">
+                    <div class="video-container">
+                        <iframe
+                                src="http://www.youtube.com/embed/{{FeaturedVideo.link}}?autoplay={{FeaturedVideo.autoplay}}">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-sm-3 padd-5" style="max-height: 450px;overflow-y: scroll">
+                    {{#each Videos}}
+                        <div class="video-container bottom-10">
+                            <iframe
+                                    src="http://www.youtube.com/embed/{{link}}?autoplay={{autoplay}}">
+                            </iframe>
+                        </div>
+                    {{/each}}
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-7">
-                <h1>lower left</h1>
+            <div class="col-md-8 no-padd">
+                {{#each Categories}}
+                    <div class="col-sm-4 leftContainer ContainerArticle">
+                        <a class="fgray1 bold _15 point">{{name}} <i class="fa fa-angle-double-right"></i></a><br/>
+                        {{#each TemporaryArticles}}
+                            <a class="fgray1 point _12  "><p class="unjustify">{{title}}</p></a>
+                        {{/each}}
+                    </div>
+                {{/each}}
             </div>
-            <div class="col-md-5">
-                <h1>lower right</h1>
+            <div class="col-md-4 no-padd">
+                {{#each LRArticles}}
+                    <div class="ContainerArticle col-xs-12 padd-5">
+                        <strong class="fgray1 _12">{{title}}</strong><br/>
+                        <p class="fgray1"><small class="_12">{{StringLimit 130 body}}<a class="point fblue2">...read more >></a></small></p>
+                        {{postedBy}}
+                        <small class="pull-right"><small>{{formatDate pubDate}}</small></small>
+                    </div>
+                {{/each}}
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12">
-                <h1>Footer</h1>
-            </div>
+            {{>siteFooter}}
         </div>
     </div>
 </template>

@@ -1,0 +1,26 @@
+<template name="externalNews">
+    <div class="col-xs-12 no-padd featuredArticle">
+        <div class="col-xs-6 padd-5 leftContainer">
+            <h5 class="_13 bold">{{URLFArticles.title}}</h5>
+            <small class="_12">By: {{URLFArticles.author}}</small>
+            <p class="fgray1"><img src="images/uploads/owner.jpg" class="ArticleOwnerImg-xs pull-right"><small>{{StringLimit 150 URLFArticles.body}}...</small></p>
+            <small class="_10 pull-right">Posted By: {{URLFArticles.postedBy}}</small>
+        </div>
+        <div class="col-xs-6 padd-5">
+            <h5 class="_13 bold">{{URRFArticles.title}}</h5>
+            <small class="_12">By: {{URRFArticles.author}}</small>
+            <p class="fgray1"><img src="images/uploads/owner.jpg" class="ArticleOwnerImg-xs pull-right"><small>{{StringLimit 150 URRFArticles.body}}...</small></p>
+            <small class="_10 pull-right">Posted By: {{URRFArticles.postedBy}}</small>
+        </div>
+    </div>
+    <div class="col-xs-12 no-padd">
+        {{#each RightArticles}}
+            <div class="ContainerArticle col-xs-12 padd-5">
+                <strong class="fgray1 _12">{{title}}</strong><br/>
+                <p class="fgray1"><small class="_12">{{StringLimit 130 body}}<a class="point fblue2">...read more >></a></small></p>
+                {{postedBy}}
+                <small class="pull-right"><small>{{formatDate pubDate}}</small></small>
+            </div>
+        {{/each}}
+    </div>
+</template>

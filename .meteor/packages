@@ -20,8 +20,6 @@ iron:router
 fortawesome:fontawesome
 msavin:mongol
 aldeed:collection2
-cfs:standard-packages
-cfs:filesystem
-cfs:gridfs
 harrison:papa-parse
 anonyfox:scrape
+momentjs:moment
