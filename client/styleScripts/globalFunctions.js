@@ -22,3 +22,8 @@ UI.registerHelper('StringLimit', function(number,String){
 UI.registerHelper('formatDate', function(date) {
     return moment(date).format('MMM-DD-YYYY');
 });
+
+ToggleElement = function(id){
+    var id = '#'+id;
+    $(id).toggle('fast');
+}
