@@ -62,3 +62,7 @@ Router.route('/admin/aggregator-archive', function () {
     })
 });
 
+Router.route('/admin/dump', function () {
+    this.render('app_dump');
+    this.layout('adminLayout');
+})

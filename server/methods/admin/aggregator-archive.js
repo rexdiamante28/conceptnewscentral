@@ -7,11 +7,10 @@ Meteor.methods({
 
         var totalFeeds = 0;
 
+
         Rss.find().map(function (rss) {
 
             var FeedData = Scrape.feed(rss.link);
-
-
 
             FeedData.items.map(function (item) {
 
@@ -29,7 +28,7 @@ Meteor.methods({
             })
         })
 
-        return totalFeeds
+        return  totalFeeds
     },
     'removeAllFeeds': function () {
         Feeds.remove({})
