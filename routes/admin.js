@@ -41,3 +41,13 @@ Router.route('/admin/aggregator-keywords', function () {
         Meteor.subscribe('getKeywordsPub', Session.get('skips'));
     })
 });
+
+Router.route('/admin/aggregator-rss', function () {
+
+    this.render('aggregator_rss');
+    this.layout('adminLayout');
+
+    Deps.autorun(function () {
+        Meteor.subscribe('getRssPub', Session.get('skips'));
+    })
+});
