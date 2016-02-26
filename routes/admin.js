@@ -2,6 +2,7 @@
  * Created by NicoloEngles on 2/15/2016.
  */
 
+
 Router.route('/admin/', function () {
     this.render('adminIndex');
     this.layout('adminLayout');
