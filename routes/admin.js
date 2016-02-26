@@ -51,3 +51,14 @@ Router.route('/admin/aggregator-rss', function () {
         Meteor.subscribe('getRssPub', Session.get('skips'));
     })
 });
+
+Router.route('/admin/aggregator-archive', function () {
+
+    this.render('aggregator_archive');
+    this.layout('adminLayout');
+
+    Deps.autorun(function () {
+        Meteor.subscribe('getFeedsPub', Session.get('skips'));
+    })
+});
+
