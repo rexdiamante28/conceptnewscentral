@@ -41,6 +41,7 @@ Template.aggregator_keywords.events({
                 Session.set('updateId', '0');
                 Session.set('saveBtnTxt', 'Save');
                 Session.set('resetBtnTxt', 'Reset');
+                $('.selectors').removeClass('success');
             })
         } else {
             Meteor.call('insertKeyword', name, function (error, result) {
@@ -50,18 +51,7 @@ Template.aggregator_keywords.events({
         }
     },
     'click .deleteKeyword': function () {
-        var callback = function() {
-            Meteor.call('getPageCount', function (err, result) {
-                if(!err){
-                    if(parseInt(Session.get('totalPageNumber')) > result){
-                        $('#last-item-nav').prev().remove();
-                        Session.set('totalPageNumber', result)
-                    }
-                }
-            })
-        }
-
-        ConfirmActionDelete(this._id, 'deleteKeyword', callback);
+        ConfirmActionDelete(this._id, 'deleteKeyword');
     },
     'click .editKeyword': function (event) {
         Session.set('saveBtnTxt', 'Update');

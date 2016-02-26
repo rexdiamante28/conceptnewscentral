@@ -2,7 +2,7 @@
     <div class="container-fluid">
         {{> aggregator}}
 
-        <div class="col-lg-4 padd-10">
+        <div class="col-lg-3 padd-10">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form id="rssForm">
@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-8 padd-10">
+        <div class="col-lg-9 padd-10">
             <div class="panel panel-default">
                 <div class="panel-body">
                     {{> rssTable}}
@@ -46,8 +46,12 @@
         </thead>
         <tbody>
             {{#each rss}}
-                <td>{{soucrce}}</td>
-                <td>{{link}}</td>
+            <tr class="selectors">
+                <td>{{source}}</td>
+                <td style="max-width: 40%">{{link}}</td>
+                <td><a class="editRss"><i class="fa fa-pencil"></i></a></td>
+                <td><a class="deleteRss"><i class="fa fa-trash"></i></a></td>
+            </tr>
             {{/each}}
         </tbody>
     </table>
