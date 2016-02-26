@@ -1,0 +1,57 @@
+<template name="allposts">
+    <legend>
+        <h4>All Posts<br>
+            <small>Manage all previous posts here</small>
+        </h4>
+    </legend>
+    <div class="col-xs-12 no-padd">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section bgwhite">
+                    <div class="bgwhite col-xs-12 no-padd">
+                        <div class="col-sm-8 bgwhite">
+                            <label class="bold fblue5 _17">&nbsp;FILTERS : </label>
+                            {{#each Categories}}
+                                <label class="fhoverblue5 point _14">{{name}}</label> |
+                            {{/each}}
+                        </div>
+                        <div class="col-sm-4 bgwhite">
+                            <div class="input-group">
+                                  <span class="input-group-addon ">
+                                    <i class="fa fa-calendar _17 point fhoverblue5"></i> <label class="_17">|</label> <i class="fa fa-search _17 point fhoverblue5"></i>
+                                  </span>
+                                <input type="text" class="form-control" style="box-shadow: none;" placeholder="Search">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive bgwhite top-20">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr class="_15 normal helvetica fblue5">
+                    <th> <input type="checkbox"> Title</th>
+                    <th>Published Date</th>
+                    <th>Status</th>
+                    <th>Author</th>
+                    <th>Posted By</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each AllArticles}}
+                    <tr>
+                        <td><input type="checkbox"> <a class="fblue5"  href="">{{title}}</a></td>
+                        <td> {{formatDate pubDate}}</td>
+                        <td>{{status}}</td>
+                        <td>{{author}}</td>
+                        <td>{{postedBy}}</td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</template>

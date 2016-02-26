@@ -3,12 +3,13 @@
  */
 if(Meteor.isClient){
     Template.newPost.onRendered(function(){
+        $('.active').removeClass('active');
+        $('#l3_2').addClass('active');
+
         $('#textEditor').ckeditor();
         CKEDITOR.replace('textEditor',{
             height: 500
         });
-        $('.active').removeClass('active');
-        $('#l3_2').addClass('active');
     })
     Template.newPost.onDestroyed(function(){
         if (CKEDITOR.instances.textEditor) CKEDITOR.instances.textEditor.destroy();

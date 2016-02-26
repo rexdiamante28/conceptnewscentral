@@ -41,3 +41,20 @@ Router.route('/admin/aggregator-keywords', function () {
         Meteor.subscribe('getKeywordsPub', Session.get('skips'));
     })
 });
+
+Router.route('/admin/profile', function () {
+
+    Meteor.subscribe('ProfileInfo');
+
+    this.render('profile');
+    this.layout('adminLayout');
+});
+
+Router.route('/admin/allposts', function () {
+
+    Meteor.subscribe('getCategories');
+    Meteor.subscribe('getAllArticles');
+
+    this.render('allposts');
+    this.layout('adminLayout');
+});
