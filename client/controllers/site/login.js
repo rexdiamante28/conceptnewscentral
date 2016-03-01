@@ -1,5 +1,11 @@
 
 if(Meteor.isClient) {
+    Template.loginForm.rendered = function () {
+        if(Meteor.userId()){
+           Router.go('/admin');
+        }
+    }
+
     //events
     Template.loginForm.events({
         'submit form': function (event, template) {
@@ -8,6 +14,17 @@ if(Meteor.isClient) {
             var username = template.find('#username').value;
             var password = template.find('#password').value;
 
+            Meteor.loginWithPassword(username, password, function (err) {
+                if(err){
+                    alertify.error("Ooops!  " + err.reason + ". Please try again.");
+                } else {
+                    if(Router.current().route.getName() === 'concept_admin'){
+                        Router.go('/admin');
+                    }
+                }
+            })
+
+            /*
             Meteor.call('Login', username, password, function (err, result) {
                 if (err) {
                     alertify.error("Ooops! Something went wrong. Please try again later.");
@@ -25,6 +42,7 @@ if(Meteor.isClient) {
                     }
                 }
             })
+            */
         }
     })
 }

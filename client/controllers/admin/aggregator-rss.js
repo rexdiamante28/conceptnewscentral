@@ -18,7 +18,6 @@ Template.aggregator_rss.events({
         event.preventDefault();
 
         var rss = {
-            source: $('#sourceName').val(),
             link: $('#link').val(),
             createdDate: new Date()
         }

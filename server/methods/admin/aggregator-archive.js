@@ -7,24 +7,21 @@ Meteor.methods({
 
         var totalFeeds = 0;
 
-
         Rss.find().map(function (rss) {
 
             var FeedData = Scrape.feed(rss.link);
 
             FeedData.items.map(function (item) {
 
-                if(Feeds.find({link: item.link,title: item.title}).count() === 0){
-                    Feeds.insert({
-                        title: item.title,
-                        pubDate: item.pubDate,
-                        link: item.link,
-                        source: rss.source,
-                        createdDate: new Date()
-                    })
+                var cleanLink = item.link.replace('https://www.google.com/url?rct=j&sa=t&url=', '');
 
-                    totalFeeds += 1;
-                }
+                cleanLink = cleanLink.substr(0, cleanLink.indexOf('&ct=ga&cd='));
+
+                var feed = Scrape.website(cleanLink);
+
+                Feeds.insert(feed);
+
+                totalFeeds+=1;
             })
         })
 
@@ -35,7 +32,10 @@ Meteor.methods({
     }
 })
 
-Meteor.publish('getFeedsPub', function (skips) {
+Meteor.publish('getFeedsPub', function (query,skips) {
     var skip = parseInt(skips);
-    return Feeds.find({},{skip: skip, limit: 10});
+    if(query === ''){
+        return Feeds.find({},{skip: skip, limit: 10, sort:{pubDate: -1}});
+    }
+    return Feeds.find({ $or: [ { title: { $regex: query, $options: 'i' } }, { source: { $regex: query, $options: 'i' } } ] },{skip: skip, limit: 10, sort:{pubDate: -1}});
 })

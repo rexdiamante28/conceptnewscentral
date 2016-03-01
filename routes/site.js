@@ -2,7 +2,6 @@
  * Created by NicoloEngles on 2/15/2016.
  */
 
-
 Router.route('/', function () {
 
     Meteor.subscribe("getAllArticles");
@@ -34,6 +33,7 @@ Router.route('/viewnews', function () {
 });
 
 
+// Login Authentication
 
 Router.route('/concept_admin', function () {
     this.render('loginForm');
