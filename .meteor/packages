@@ -25,3 +25,7 @@ anonyfox:scrape
 momentjs:moment
 hitchcott:app-dump
 accounts-password
+cfs:standard-packages
+cfs:filesystem
+cfs:ui
+riaan53:blueimp-canvas-to-blob

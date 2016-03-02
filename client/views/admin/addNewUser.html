@@ -42,7 +42,6 @@
                     <div class="col-lg-10">
                         <select class="form-control" id="role">
                             <option>Subscriber</option>
-                            <option>Contributor</option>
                             <option>Author</option>
                             <option>Editor</option>
                             <option>Administrator</option>
@@ -54,9 +53,9 @@
                 <div class="form-group">
                     <label for="fullName" class="col-lg-2 control-label">Image</label>
                     <div class="col-lg-10">
-                        <input type="file"  id="avatar" placeholder="Full Name">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Change Picture</button>
                         <div class="avatarHolder top-10">
-                            <img src="/images/icons/admin/avatar.png" class="col-xs-12 no-padd">
+                            <img src="{{profileUrl}}" class="col-xs-12 no-padd">
                         </div>
                     </div>
                 </div>
@@ -66,4 +65,28 @@
             </div>
         </fieldset>
     </form>
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Upload Picture</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-lg-12 padd-10">
+                        <input type="file" id="avatar" />
+                        {{> profile_canvas}}
+                    </div>
+                    {{#if allowSaveImage}}
+                        <button id="saveImage" class="btn btn-primary btn-sm pull-right">Upload Image</button>
+                    {{/if}}
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="profile_canvas">
+    <img id="avatarimg"  alt="" class="col-lg-12">
 </template>

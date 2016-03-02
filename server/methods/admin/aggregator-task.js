@@ -1,3 +1,4 @@
+/* Temporarily turned off
 Meteor.startup(function () {
 
     Meteor.setInterval(function () {
@@ -7,3 +8,4 @@ Meteor.startup(function () {
         });
     }, 300000)
 })
+    */
