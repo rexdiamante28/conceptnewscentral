@@ -1,0 +1,58 @@
+<template name="aggregator_archive">
+    <div class="container-fluid">
+        {{>aggregator}}
+
+        <div class="col-lg-12 padd-10">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-lg-12">
+                        <button id="fetchBtn" class="btn btn-danger btn-sm">Fetch</button>
+                        <div class="form-inline pull-right">
+                            <form id="searchForm">
+                                <input id="searchInput" class="form-control input-sm" />
+                                <button id="searchBtn" class="btn btn-default btn-sm">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 padd-10">
+                        {{> feedsTable}}
+                    </div>
+                    <ul class="pager">
+                        <li><a class="prevBtn" href="#">Previous</a></li>
+                        <li><a class="nextBtn" href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="feedsTable">
+    <table class="table table-responsive">
+        <thead>
+            <th></th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Source</th>
+        </thead>
+        <tbody>
+        {{#if feedsCount}}
+        {{#each feeds}}
+            <tr>
+                <td><a href={{url }} target="_blank">View Link</a></td>
+                <td>{{title}}</td>
+                <td>{{formatDate pubDate}}</td>
+                <td>{{domain}}</td>
+            </tr>
+        {{/each}}
+        {{else}}
+            <tr>
+                <td></td>
+                <td>No more results</td>
+                <td></td>
+                <td></td>
+            </tr>
+        {{/if}}
+        </tbody>
+    </table>
+</template>

@@ -3,7 +3,7 @@ Meteor.startup(function() {
     appDump.allow = function() {
       return true
     };
-    var images = [{url:'/images/1.jpg'}];
+    var images = [{url:'/images/uploads/news.jpg'}];
 
 
     if(Articles.find().count() === 0){

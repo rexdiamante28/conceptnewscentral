@@ -5,13 +5,32 @@ UI.registerHelper('formatDate', function(context, options) {
 
 Template.aggregator_archive.rendered = function () {
     Session.set('skips', 0)
+    Session.set('query', '');
+
+
+    Deps.autorun(function () {
+        subs = Meteor.subscribe('getFeedsPub', Session.get('query'), Session.get('skips'));
+    })
 }
+
+Template.aggregator_archive.destroyed = function () {
+    subs.stop();
+}
+
 
 Template.feedsTable.helpers({
     'feeds': function () {
         return Feeds.find({},{$sort:{pubDate: -1}})
+    },
+    'feedsCount': function () {
+        if(Feeds.find().count() > 0) {
+            return true
+        } else {
+            return false
+        }
     }
 })
+
 
 Template.aggregator_archive.events({
     'click #fetchBtn': function (event) {
@@ -28,12 +47,26 @@ Template.aggregator_archive.events({
             })
         }
     },
+
+    'submit #searchForm': function (event, template) {
+        event.preventDefault();
+
+        var searchWord = template.find('#searchInput').value;
+
+        Session.set('query', searchWord);
+
+    },
+
     'click .prevBtn': function () {
         if(Session.get('skips') >= 10) {
             Session.set('skips', Session.get('skips') - 10);
         }
     },
+
     'click .nextBtn': function () {
+        if(Feeds.find().count() <= 0){
+            return
+        }
         Session.set('skips', Session.get('skips') + 10);
     }
 })

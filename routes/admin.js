@@ -2,8 +2,34 @@
  * Created by NicoloEngles on 2/15/2016.
  */
 
+var OnBeforeActions;
 
-Router.route('/admin/', function () {
+OnBeforeActions = {
+    loginRequired: function() {
+        if (!Meteor.userId()) {
+            this.render('LoginForm');
+        } else {
+            this.next();
+        }
+    }
+};
+
+Router.onBeforeAction(OnBeforeActions.loginRequired, {
+    only: [
+        'admin',
+        'admin.aggregator-keywords',
+        'admin.aggregator-rss',
+        'admin.aggregator-archive',
+        'admin.addnewuser',
+        'admin.allusers',
+        'admin.newscategories',
+        'admin.newpost',
+        'admin.tags'
+    ]
+});
+
+
+Router.route('/admin', function () {
     this.render('adminIndex');
     this.layout('adminLayout');
 });
@@ -65,7 +91,7 @@ Router.route('/admin/aggregator-rss', function () {
     this.layout('adminLayout');
 
     Deps.autorun(function () {
-        Meteor.subscribe('getRssPub', Session.get('skips'));
+        Meteor.subscribe('getRssPub', Session.get('query'),Session.get('skips'));
     })
 });
 
@@ -74,12 +100,4 @@ Router.route('/admin/aggregator-archive', function () {
     this.render('aggregator_archive');
     this.layout('adminLayout');
 
-    Deps.autorun(function () {
-        Meteor.subscribe('getFeedsPub', Session.get('skips'));
-    })
 });
-
-Router.route('/admin/dump', function () {
-    this.render('app_dump');
-    this.layout('adminLayout');
-})
