@@ -69,6 +69,22 @@ Router.route('/admin/aggregator-keywords', function () {
     })
 });
 
+Router.route('/admin/profile', function () {
+
+    Meteor.subscribe('ProfileInfo');
+
+    this.render('profile');
+    this.layout('adminLayout');
+});
+
+Router.route('/admin/allposts', function () {
+
+    Meteor.subscribe('getCategories');
+    Meteor.subscribe('getAllArticles');
+
+    this.render('allposts');
+    this.layout('adminLayout');
+});
 Router.route('/admin/aggregator-rss', function () {
 
     this.render('aggregator_rss');
