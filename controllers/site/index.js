@@ -32,3 +32,9 @@ if(Meteor.isClient){
         }
     })
 }
+
+if(Meteor.isServer){
+    Meteor.publish('getAllVideos', function () {
+        return Videos.find();
+    })
+}

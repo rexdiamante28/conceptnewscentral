@@ -13,6 +13,7 @@ if(Meteor.isServer){
         stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
     });
 
+
 }
 
 UI.registerHelper('StringLimit', function(number,String){
@@ -26,4 +27,8 @@ UI.registerHelper('formatDate', function(date) {
 ToggleElement = function(id){
     var id = '#'+id;
     $(id).toggle('fast');
+}
+
+HHH = function(){
+    console.log("hahhaa");
 }

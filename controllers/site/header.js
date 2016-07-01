@@ -9,3 +9,9 @@ if(Meteor.isClient){
         }
     })
 }
+
+if(Meteor.isServer){
+    Meteor.publish('getCategories', function () {
+        return Categories.find()
+    })
+}

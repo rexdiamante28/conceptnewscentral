@@ -97,3 +97,34 @@ ConfirmActionDelete = function confirmAction(id, deleteMethod, callback){
 Goto = function goto(route){
     Router.go(route);
 }
+
+if(Meteor.isServer){
+    Validate3 = function validate3(error,schema){
+
+        var message = {};
+        var errorMessage = "";
+
+        if(error){
+
+            var count  = error.invalidKeys.length;
+            var a=0;
+
+            for(a=0;a<count;a++)
+            {
+                errorMessage+= "&bull;&nbsp;&nbsp;"+schema.simpleSchema().namedContext().keyErrorMessage(error.invalidKeys[a].name)+"<br/>";
+                console.log(errorMessage);
+            }
+            message.status = "false";
+            message.message = errorMessage;
+
+        }
+        else
+        {
+            message.status = "true";
+            message.message = "";
+        }
+
+        return message;
+    }
+
+}

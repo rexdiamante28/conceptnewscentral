@@ -11,6 +11,7 @@ if(Meteor.isClient){
             height: 500
         });
     })
+
     Template.newPost.onDestroyed(function(){
         if (CKEDITOR.instances.textEditor) CKEDITOR.instances.textEditor.destroy();
     })
@@ -24,7 +25,7 @@ if(Meteor.isClient){
             return Categories.find({});
         },
         Authors : function () {
-            return Users.find({level:"Author"});
+            //return Users.find({level:"Author"});
         },
         Tags : function(){
             return Tags.find({});

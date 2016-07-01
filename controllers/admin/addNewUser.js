@@ -1,6 +1,7 @@
-/**
- * Created by NicoloEngles on 2/17/2016.
- */
+if(Meteor.isClient){
+    /**
+     * Created by NicoloEngles on 2/17/2016.
+     */
     Template.addNewUser.rendered = function(){
         $('.active').removeClass('active');
         $('#l2_2').addClass('active');
@@ -102,3 +103,39 @@
     Template.addNewUser.destroyed = function () {
         handler.stop();
     }
+}
+
+
+if(Meteor.isServer){
+    Meteor.methods({
+        'addNewUser': function (user) {
+            Accounts.createUser({
+                username: user.username,
+                email: user.email,
+                password: user.password,
+                profile: {
+                    name: user.profile.name,
+                    avatar: user.profile.avatar,
+                    level: user.profile.level
+                }
+            })
+
+            $('#addUserForm').reset();
+
+        }
+    })
+
+    Meteor.methods({
+        'deleteUsers': function(){
+            Meteor.users.remove({});
+        }
+    })
+
+    Meteor.publish('getImage', function (id) {
+        return ProfileImages.find({_id: id});
+    })
+
+    Meteor.publish('allImages', function () {
+        return ProfileImages.find();
+    })
+}

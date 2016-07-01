@@ -33,7 +33,7 @@ if(Meteor.isClient) {
                     if (result) {
                         sessionStorage.setItem('validId', result._id);
                         sessionStorage.setItem('validName', result.name);
-                        sessionStorage.setItem('validLevel', result.level)
+                        sessionStorage.setItem('validLevel', result.level);
 
                         Router.go('/admin/');
                     }
